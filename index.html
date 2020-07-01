@@ -11,18 +11,19 @@
     <title>Safety Curtain - Customisable away message and conference welcome slide</title>
 </head>
 
-<body class="theme-rainbow">
+<body class="theme-rainbow" onLoad="updateCurtain();">
     <header>
         <nav>
             Safety Curtain
             <ul>
                 <li><a href="#" id="customise-btn">Customise</a></li>
+                <li><a href="#" id="fullscreen-btn">Full Screen</a></li>
             </ul>
         </nav>
         <section id="customise">
             <form>
                 <label for="message">Message:</label>
-                <input type="text" id="message" name="message" size="28" placeholder="Safety Curtain">
+                <input type="text" id="message" name="message" size="28" value="Welcome!">
                 <label for="theme">Theme:</label>
                 <select id="theme">
                     <option value="rainbow">rainbow</option>
@@ -33,7 +34,7 @@
     </header>
     <main>
         <section id="curtain">
-            <h1 id="message-display">Safety Curtain</h1>
+            <h1 id="message-display">Welcome!</h1>
         </section>
     </main>
 
@@ -42,7 +43,7 @@
         function updateCurtain() {
             let customiseSection = document.getElementById("customise");
             let message = document.getElementById("message").value || "Safety Curtain";
-            let theme = document.getElementById("theme").value || "default";
+            // let theme = document.getElementById("theme").value || "rainbow";
             document.getElementById("message-display").innerHTML = message;
             customiseSection.style.display = "none";
         }
@@ -52,6 +53,17 @@
             let customiseSection = document.getElementById("customise");
 
             customiseSection.style.display = customiseSection.style.display == "block" ? "none" : "block";
+        })
+
+        var fullscreenBtn = document.querySelector("#fullscreen-btn");
+        fullscreenBtn.addEventListener('click', function() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen();
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                }
+            }
         })
     </script>
 </body>
