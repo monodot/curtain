@@ -455,12 +455,24 @@ section#customise {
 }
 
 main {
-    height: calc(100vh - 5rem);
+    height: calc(75vh);
+    width: 100%;
     padding: 1rem;
+    display: table;
 }
 
 main h1 {
     font-size: 5rem;
+    margin: 0;
+}
+
+section#curtain {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    /* width: 100%; */
+    /* display: inline-block; */
+    /* vertical-align: middle; */
 }
 
 .theme-rainbow {
