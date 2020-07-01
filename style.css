@@ -1,0 +1,80 @@
+nav {
+    margin-bottom: 0;
+}
+
+footer,
+header,
+main {
+    max-width: 100%;
+    padding: 1rem;
+}
+
+body {
+    padding: 0;
+}
+
+nav ul {
+    margin: 0;
+}
+
+input,
+label,
+select,
+textarea {
+    display: inline;
+}
+
+section#customise {
+    display: none;
+}
+
+main {
+    height: calc(75vh);
+    width: 100%;
+    padding: 1rem;
+    display: table;
+}
+
+main h1 {
+    font-size: 5rem;
+    margin: 0;
+}
+
+section#curtain {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    /* width: 100%; */
+    /* display: inline-block; */
+    /* vertical-align: middle; */
+}
+
+.theme-rainbow {
+    background: linear-gradient(230deg, #ff0000, #ffb100, #3bb100, #009bb1, #de00d0);
+    background-size: 1000% 1000%;
+
+    -webkit-animation: AnimationName 20s ease infinite;
+    -moz-animation: AnimationName 20s ease infinite;
+    animation: AnimationName 20s ease infinite;
+
+    color: #fff;
+}
+.theme-rainbow a {
+    color: #fff;
+}
+
+@-webkit-keyframes AnimationName {
+    0%{background-position:0% 51%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 51%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:0% 51%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 51%}
+}
+@keyframes AnimationName {
+    0%{background-position:0% 51%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 51%}
+}
