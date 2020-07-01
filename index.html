@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="./mvp.css">
+
+    <meta charset="utf-8">
+    <meta name="description" content="Safety Curtain - Customisable away message and conference welcome slide">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Safety Curtain - Customisable away message and conference welcome slide</title>
+</head>
+
+<body class="theme-rainbow">
+    <header>
+        <nav>
+            Safety Curtain
+            <ul>
+                <li><a href="#" id="customise-btn">Customise</a></li>
+            </ul>
+        </nav>
+        <section id="customise">
+            <form>
+                <label for="message">Message:</label>
+                <input type="text" id="message" name="message" size="28" placeholder="Safety Curtain">
+                <label for="theme">Theme:</label>
+                <select id="theme">
+                    <option value="rainbow">rainbow</option>
+                </select>
+                <button type="submit" onClick="updateCurtain(); return false;">Update & Close</button>
+            </form>
+        </section>
+    </header>
+    <main>
+        <section id="curtain">
+            <h1 id="message-display">Safety Curtain</h1>
+        </section>
+    </main>
+
+    <script>
+
+        function updateCurtain() {
+            let customiseSection = document.getElementById("customise");
+            let message = document.getElementById("message").value || "Safety Curtain";
+            let theme = document.getElementById("theme").value || "default";
+            document.getElementById("message-display").innerHTML = message;
+            customiseSection.style.display = "none";
+        }
+
+        var customiseBtn = document.querySelector("#customise-btn");
+        customiseBtn.addEventListener('click', function() {
+            let customiseSection = document.getElementById("customise");
+
+            customiseSection.style.display = customiseSection.style.display == "block" ? "none" : "block";
+        })
+    </script>
+</body>
+
+</html>
