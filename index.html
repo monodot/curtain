@@ -71,8 +71,10 @@
         function updateCurtain() {
             let customiseSection = document.getElementById("customise");
             let message = document.getElementById("message").value || "Safety Curtain";
+            var text = document.createTextNode(message);
             // let theme = document.getElementById("theme").value || "rainbow";
-            document.getElementById("message-display").innerHTML = message;
+            document.getElementById("message-display").textContent = text.wholeText;
+
             customiseSection.style.display = "none";
         }
 
