@@ -43,11 +43,13 @@
         <nav>
             <span>Safety Curtain by <a href="https://twitter.com/monodot">@monodot</a></span>
             <ul>
-                <li><a href="#" id="customise-btn">Customise</a></li>
-                <li><a href="#" id="fullscreen-btn">Full screen</a></li>
+                <li><a href="#" id="customise-btn">✎ Customise</a></li>
+                <li><a href="#" id="fullscreen-btn">⤢ Full screen</a></li>
                 <li><a href="about.html">What's this?</a></li>
             </ul>
         </nav>
+    </header>
+    <main>
         <section id="customise">
             <form>
                 <label for="message">Message:</label>
@@ -56,11 +58,9 @@
                 <select id="theme">
                     <option value="rainbow">rainbow</option>
                 </select> -->
-                <button type="submit" onClick="updateCurtain(); return false;">Update & Close</button>
+                <button type="submit" onClick="updateCurtain(); return false;">Save & Close</button>
             </form>
         </section>
-    </header>
-    <main>
         <section id="curtain">
             <h1 id="message-display">Welcome!</h1>
         </section>
@@ -79,14 +79,16 @@
         }
 
         var customiseBtn = document.querySelector("#customise-btn");
-        customiseBtn.addEventListener('click', function() {
+        customiseBtn.addEventListener('click', function(ev) {
             let customiseSection = document.getElementById("customise");
 
             customiseSection.style.display = customiseSection.style.display == "block" ? "none" : "block";
+
+            ev.preventDefault();
         })
 
         var fullscreenBtn = document.querySelector("#fullscreen-btn");
-        fullscreenBtn.addEventListener('click', function() {
+        fullscreenBtn.addEventListener('click', function(ev) {
             if (!document.fullscreenElement) {
                 document.documentElement.requestFullscreen();
             } else {
@@ -94,6 +96,7 @@
                     document.exitFullscreen();
                 }
             }
+            ev.preventDefault();
         })
     </script>
 </body>
