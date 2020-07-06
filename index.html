@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="./mvp.css">
+    <!-- <link rel="stylesheet" href="./mvp.css"> -->
     <link rel="stylesheet" href="./style.css">
 
     <meta charset="utf-8">
@@ -52,17 +52,20 @@
     <main>
         <section id="customise">
             <form>
+                <h2>Customise</h2>
                 <label for="message">Message:</label>
                 <input type="text" id="message" name="message" size="28" value="(your message goes here)">
-                <!-- <label for="theme">Theme:</label>
+                <label for="theme">Theme:</label>
                 <select id="theme">
                     <option value="rainbow">rainbow</option>
-                </select> -->
+                </select>
                 <button type="submit" onClick="updateCurtain(); return false;">Save & Close</button>
             </form>
         </section>
         <section id="curtain">
-            <h1 id="message-display">Welcome!</h1>
+            <article>
+                <h1 id="message-display">Welcome!</h1>
+            </article>
         </section>
     </main>
 
