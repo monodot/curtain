@@ -17,7 +17,7 @@ body {
     padding: 0;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 75vh;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 }
 
@@ -64,12 +64,10 @@ label {
 
 input, select, textarea {
     margin-bottom: 1rem;
-    /* padding: 0.4rem 0.8rem; */
+    padding: 0.3rem 0.3rem;
 }
 
 main {
-    /* height: calc(75vh); */
-    min-height: 100%;
     flex-grow: 1;
     flex-shrink: 1;
     flex-basis: 0%;
@@ -84,11 +82,15 @@ h1 {
     font-size: 3rem;
     margin: 0;
 }
+h2 {
+    font-size: 2rem;
+}
 
 nav {
     display: flex;
     font-weight: bold;
     justify-content: space-between;
+    align-items: center;
     margin-bottom: 0;
     flex-wrap: wrap; /* Wrap on two lines */
 }
@@ -133,39 +135,6 @@ section#curtain {
     /* flex-shrink: 1; */
     /* flex-basis: 0%; */
 }
-section#curtain article {
-    margin: auto auto;
-}
-
-.theme-rainbow {
-    background: linear-gradient(230deg, #ff0000, #ffb100, #3bb100, #009bb1, #de00d0);
-    background-size: 1000% 1000%;
-
-    -webkit-animation: AnimationName 20s ease infinite;
-    -moz-animation: AnimationName 20s ease infinite;
-    animation: AnimationName 20s ease infinite;
-
-    color: #fff;
-}
-.theme-rainbow a {
-    color: #fff;
-}
-
-@-webkit-keyframes AnimationName {
-    0%{background-position:0% 51%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 51%}
-}
-@-moz-keyframes AnimationName {
-    0%{background-position:0% 51%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 51%}
-}
-@keyframes AnimationName {
-    0%{background-position:0% 51%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 51%}
-}
 
 /* Style changes for larger screens */
 @media screen and (min-width:990px) {
@@ -176,4 +145,10 @@ section#curtain article {
     h1 {
         font-size: 5rem;
     }
+    h2 {
+        font-size: 3rem;
+    }
 }
+
+
+

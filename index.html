@@ -4,6 +4,7 @@
 <head>
     <!-- <link rel="stylesheet" href="./mvp.css"> -->
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./themes.css">
 
     <meta charset="utf-8">
     <meta name="description" content="Safety Curtain - Customisable away message and conference welcome slide">
@@ -45,27 +46,30 @@
             <ul>
                 <li><a href="#" id="customise-btn">✎ Customise</a></li>
                 <li><a href="#" id="fullscreen-btn">⤢ Full screen</a></li>
-                <li><a href="about.html">What's this?</a></li>
+                <li><a href="about.html">About</a></li>
             </ul>
         </nav>
     </header>
     <main>
         <section id="customise">
             <form>
-                <h2>Customise</h2>
+                <h3>What's on your safety curtain?</h3>
                 <label for="message">Message:</label>
                 <input type="text" id="message" name="message" size="28" value="(your message goes here)">
                 <label for="theme">Theme:</label>
                 <select id="theme">
-                    <option value="rainbow">rainbow</option>
+                    <option value="theme-boudoir">Boudoir</option>
+                    <option value="theme-purpleturtle">Purple Turtle</option>
+                    <option value="theme-rainbow" selected="true">Rainbow</option>
+                    <option value="theme-night">Night</option>
+                    <option value="theme-sunrise">Sunrise</option>
+                    <option value="theme-sunset">Sunset</option>
                 </select>
                 <button type="submit" onClick="updateCurtain(); return false;">Save & Close</button>
             </form>
         </section>
         <section id="curtain">
-            <article>
                 <h1 id="message-display">Welcome!</h1>
-            </article>
         </section>
     </main>
 
@@ -75,8 +79,9 @@
             let customiseSection = document.getElementById("customise");
             let message = document.getElementById("message").value || "Safety Curtain";
             var text = document.createTextNode(message);
-            // let theme = document.getElementById("theme").value || "rainbow";
+            let theme = document.getElementById("theme").value || "theme-rainbow";
             document.getElementById("message-display").textContent = text.wholeText;
+            document.body.className = theme;
 
             customiseSection.style.display = "none";
         }
