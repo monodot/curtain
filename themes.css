@@ -13,6 +13,10 @@
 .theme-rainbow a {
     color: #fff;
 }
+.theme-rainbow nav a {
+    color: rgba(255,255,255,0.7);
+}
+
 
 @-webkit-keyframes RainbowTheme {
     0%{background-position:0% 51%}
@@ -41,6 +45,9 @@
 .theme-sunrise a {
     color: #fff;
 }
+.theme-sunrise nav a {
+    color: rgba(255,255,255,0.7);
+}
 
 .theme-purpleturtle {
     background: hsla(288, 100%, 17%, 1);
@@ -65,6 +72,9 @@
 .theme-boudoir a {
     color: #fff;
 }
+.theme-boudoir nav a {
+    color: rgba(255,255,255,0.7);
+}
 
 .theme-sunset {
     background: hsla(265, 53%, 29%, 1);
@@ -77,6 +87,9 @@
 .theme-sunset a {
     color: #fff;
 }
+.theme-sunset nav a {
+    color: rgba(255,255,255,0.7);
+}
 
 .theme-night {
     background: hsla(215, 50%, 13%, 1);
@@ -88,4 +101,7 @@
 }
 .theme-night a {
     color: #fff;
+}
+.theme-night nav a {
+   color: rgba(255,255,255,0.7);
 }
