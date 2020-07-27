@@ -105,3 +105,18 @@
 .theme-night nav a {
    color: rgba(255,255,255,0.7);
 }
+
+.theme-ocean {
+    background: #046588; /* Old browsers */
+    background: -moz-radial-gradient(center, ellipse cover, #046588 0%, #001b2c 100%); /* FF3.6-15 */
+    background: -webkit-radial-gradient(center, ellipse cover, #046588 0%,#001b2c 100%); /* Chrome10-25,Safari5.1-6 */
+    background: radial-gradient(ellipse at center, #046588 0%,#001b2c 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#046588', endColorstr='#001b2c',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    color: #fff;
+}
+.theme-ocean a {
+    color: #fff;
+}
+.theme-ocean nav a {
+   color: rgba(255,255,255,0.7);
+}
