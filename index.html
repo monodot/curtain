@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-    <!-- <link rel="stylesheet" href="./mvp.css"> -->
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./themes.css">
 
@@ -65,11 +64,29 @@
                     <option value="theme-sunrise">Sunrise</option>
                     <option value="theme-sunset">Sunset</option>
                 </select>
+                <label><input type="checkbox" id="countdown-enabled" name="countdown-enabled" value="1" /> Display countdown timer to:</label>
+                <div>
+                  <select id="countdown-hour">
+                  </select>
+                  <span>:</span>
+                  <select id="countdown-minute">
+                  </select>
+                  <span>:</span>
+                  <select id="countdown-second">
+                  </select>
+                </div>
+                <div>
+                  <label>Or set timer to:</label>
+                  <a href="#" class="button" id="set-5min">5</a>
+                  <a href="#" class="button" id="set-10min">10</a>
+                  <span>mins</span>
+                </div>
                 <button type="submit" onClick="updateCurtain(); return false;">Save & Close</button>
             </form>
         </section>
         <section id="curtain">
                 <h1 id="message-display">Welcome!</h1>
+                <p class="countdown is-hidden" id="countdown-clock">00:00</p>
         </section>
     </main>
 
@@ -77,15 +94,96 @@
 
         function updateCurtain() {
             let customiseSection = document.getElementById("customise");
+            let countdownHour = document.getElementById("countdown-hour").value;
+            let countdownMinute = document.getElementById("countdown-minute").value;
+            let countdownSecond = document.getElementById("countdown-second").value;
+            let countdownEnabled = document.getElementById("countdown-enabled").checked;
+            let countdownClock = document.getElementById("countdown-clock");
             let message = document.getElementById("message").value || "Safety Curtain";
             var text = document.createTextNode(message);
             let theme = document.getElementById("theme").value || "theme-rainbow";
             document.getElementById("message-display").textContent = text.wholeText;
             document.body.className = theme;
 
+            if (countdownEnabled) {
+                countdownClock.classList.remove('is-hidden');
+                endtime.setHours(countdownHour);
+                endtime.setMinutes(countdownMinute);
+                endtime.setSeconds(countdownSecond);
+                updateClock(clock, endtime);
+            } else {
+                countdownClock.classList.add('is-hidden');
+            }
+
+            // Close the form/window
             customiseSection.style.display = "none";
         }
 
+        /* https://www.sitepoint.com/build-javascript-countdown-timer-no-dependencies/ */
+        function getTimeRemaining(endtime){
+            const total = Date.parse(endtime) - Date.parse(new Date());
+            const seconds = Math.floor( (total/1000) % 60 );
+            const minutes = Math.floor( (total/1000/60) % 60 );
+            const hours = Math.floor( (total/(1000*60*60)) % 24 );
+            const days = Math.floor( total/(1000*60*60*24) );
+
+            return {
+                total,
+                days,
+                hours,
+                minutes,
+                seconds
+            };
+        }
+
+        function pad(num, size) {
+            return ('000000000' + num).substr(-size);
+        }
+
+        function updateClock(clock, endtime) {
+            const t = getTimeRemaining(endtime);
+            if (t.total <= 0) {
+                clock.innerHTML = '00:00:00';
+            } else {
+                clock.innerHTML = (t.hours >= 1 ? pad(t.hours, 2) + ':' : '') + pad(t.minutes, 2) + ':' + pad(t.seconds, 2);
+            }
+        }
+
+        /* Adds X number of minutes to the countdown timer select boxes */
+        function addMinutes(minutes) {
+            var current = new Date();
+            var newDate = new Date();
+            newDate.setTime(current.getTime() + (minutes * 60 * 1000));
+            let countdownHour = document.getElementById("countdown-hour");
+            let countdownMinute = document.getElementById("countdown-minute");
+            let countdownSecond = document.getElementById("countdown-second");
+
+            var opts;
+            opts = countdownHour.options;
+            for (var opt, j = 0; opt = opts[j]; j++) {
+                if (opt.value == pad(newDate.getHours(), 2)) {
+                    countdownHour.selectedIndex = j;
+                    break;
+                }
+            }
+            opts = countdownMinute.options;
+            for (var opt, j = 0; opt = opts[j]; j++) {
+                if (opt.value == pad(newDate.getMinutes(), 2)) {
+                    countdownMinute.selectedIndex = j;
+                    break;
+                }
+            }
+
+            opts = countdownSecond.options;
+            for (var opt, j = 0; opt = opts[j]; j++) {
+                if (opt.value == pad(newDate.getSeconds(), 2)) {
+                    countdownSecond.selectedIndex = j;
+                    break;
+                }
+            }
+        }
+
+        /* Toggle customise panel */
         var customiseBtn = document.querySelector("#customise-btn");
         customiseBtn.addEventListener('click', function(ev) {
             let customiseSection = document.getElementById("customise");
@@ -95,6 +193,7 @@
             ev.preventDefault();
         })
 
+        /* Toggle fullscreen */
         var fullscreenBtn = document.querySelector("#fullscreen-btn");
         fullscreenBtn.addEventListener('click', function(ev) {
             if (!document.fullscreenElement) {
@@ -106,6 +205,55 @@
             }
             ev.preventDefault();
         })
+
+        /* Quick-click adding 5 or 10 minutes to the countdown clock */
+        var set5Btn = document.querySelector('#set-5min');
+        set5Btn.addEventListener('click', function(ev) {
+            addMinutes(5);
+            ev.preventDefault();
+        })
+        var set10Btn = document.querySelector('#set-10min');
+        set10Btn.addEventListener('click', function(ev) {
+            addMinutes(10);
+            ev.preventDefault();
+        })
+
+        /* Allow these to be used globally - because we use them in different places */
+        var endtime;
+        var clock;
+
+        window.onload = function(){
+            /* Populate the dropdowns with Hours, Minutes, Seconds on load */
+            var hourSelect = document.getElementById('countdown-hour');
+            for (var h = 0; h <= 23; h++) {
+                option = document.createElement('option');
+                option.value = pad(h, 2);
+                option.innerHTML = pad(h, 2);
+                hourSelect.appendChild(option);
+            }
+            var minuteSelect = document.getElementById('countdown-minute');
+            for (var m = 0; m <= 59; m++) {
+                option = document.createElement('option');
+                option.value = pad(m, 2);
+                option.innerHTML = pad(m, 2);
+                minuteSelect.appendChild(option);
+            }
+            var secondSelect = document.getElementById('countdown-second');
+            for (var s = 0; s <= 59; s++) {
+                option = document.createElement('option');
+                option.value = pad(s, 2);
+                option.innerHTML = pad(s, 2);
+                secondSelect.appendChild(option);
+            }
+
+            /* Start the countdown clock on page load */
+            clock = document.getElementById('countdown-clock');
+            endtime = new Date();
+            endtime.setHours('00');
+            endtime.setMinutes('00');
+            endtime.setSeconds('00');
+            const timeinterval = setInterval(updateClock, 1000, clock, endtime);
+        };
     </script>
 </body>
 
