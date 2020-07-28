@@ -1,4 +1,21 @@
 <!DOCTYPE html>
+<!--
+Safety Curtain - a customisable text banner
+Copyright (C) 2020 Tom Donohue
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+-->
 <html lang="en">
 
 <head>
@@ -41,7 +58,7 @@
 <body class="theme-rainbow" onLoad="updateCurtain();">
     <header>
         <nav>
-            <span><a href="./">Safety Curtain</a> by <a href="https://twitter.com/monodot">@monodot</a></span>
+            <span><a href="./">Safety Curtain</a></span>
             <ul>
                 <li><a href="#" id="customise-btn">✎ Customise</a></li>
                 <li><a href="#" id="fullscreen-btn">⤢ Full screen</a></li>
@@ -82,7 +99,7 @@
                   <a href="#" class="button" id="set-10min">10</a>
                   <span>mins</span>
                 </div>
-                <button type="submit" onClick="updateCurtain(); return false;">Save & Close</button>
+                <button type="submit" onClick="updateCurtain(); return false;">Save &amp; Close</button>
             </form>
         </section>
         <section id="curtain">
