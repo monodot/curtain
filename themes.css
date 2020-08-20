@@ -50,13 +50,32 @@
 }
 
 .theme-purpleturtle {
-    background: hsla(288, 100%, 17%, 1);
-    background: linear-gradient(45deg, hsla(288, 100%, 17%, 1) 0%, hsla(288, 100%, 34%, 1) 100%);
-    background: -moz-linear-gradient(45deg, hsla(288, 100%, 17%, 1) 0%, hsla(288, 100%, 34%, 1) 100%);
-    background: -webkit-linear-gradient(45deg, hsla(288, 100%, 17%, 1) 0%, hsla(288, 100%, 34%, 1) 100%);
-    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#450057", endColorstr="#8A00AC", GradientType=1 );
-    color: #fff;
+   background: linear-gradient(237deg, #450057, #8a00ac, #450057);
+   background-size: 600% 600%;
+
+   -webkit-animation: PurpleAnimation 15s ease infinite;
+   -moz-animation: PurpleAnimation 15s ease infinite;
+   animation: PurpleAnimation 15s ease infinite;
+
+   color: #fff;
 }
+
+@-webkit-keyframes PurpleAnimation {
+   0%{background-position:0% 90%}
+   50%{background-position:100% 11%}
+   100%{background-position:0% 90%}
+}
+@-moz-keyframes PurpleAnimation {
+   0%{background-position:0% 90%}
+   50%{background-position:100% 11%}
+   100%{background-position:0% 90%}
+}
+@keyframes PurpleAnimation {
+   0%{background-position:0% 90%}
+   50%{background-position:100% 11%}
+   100%{background-position:0% 90%}
+}
+
 .theme-purpleturtle a {
     color: #fff;
 }
