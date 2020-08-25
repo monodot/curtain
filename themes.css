@@ -49,7 +49,7 @@
     color: rgba(255,255,255,0.7);
 }
 
-.theme-purpleturtle {
+.theme-purple-turtle {
    background: linear-gradient(237deg, #450057, #8a00ac, #450057);
    background-size: 600% 600%;
 
@@ -76,7 +76,7 @@
    100%{background-position:0% 90%}
 }
 
-.theme-purpleturtle a {
+.theme-purple-turtle a {
     color: #fff;
 }
 
@@ -138,4 +138,23 @@
 }
 .theme-ocean nav a {
    color: rgba(255,255,255,0.7);
+}
+
+.theme-purple-clouds {
+    background: #450057;
+    background-image: url(images/bg-purple-clouds.png);
+    background-position: 0px 0px;
+    background-repeat: repeat;
+    animation: PurpleCloudsBackground 10s linear infinite;
+    color: #fff;
+}
+.theme-purple-clouds a {
+    color: #fff;
+}
+.theme-purple-clouds nav a {
+   color: rgba(255,255,255,0.7);
+}
+
+@keyframes PurpleCloudsBackground {
+    100% { background-position: 350px 0; }
 }
