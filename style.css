@@ -21,7 +21,7 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 }
 
-button, a.button {
+button, a.button, input[type=submit] {
     display: inline-block;
     font-weight: bold;
     border-radius: 5px;

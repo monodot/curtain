@@ -68,12 +68,12 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
     </header>
     <main>
         <section id="customise">
-            <form>
+            <form method="get">
                 <h3>What's on your safety curtain?</h3>
                 <label for="message">Message:</label>
                 <input type="text" id="message" name="message" size="28" value="Type your message here">
                 <label for="theme">Theme:</label>
-                <select id="theme">
+                <select id="theme" name="theme">
                     <option value="theme-boudoir">Boudoir</option>
                     <option value="theme-purple-turtle">Purple Turtle</option>
                     <option value="theme-purple-clouds">Purple Clouds</option>
@@ -83,15 +83,15 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
                     <option value="theme-sunrise">Sunrise</option>
                     <option value="theme-sunset">Sunset</option>
                 </select>
-                <label><input type="checkbox" id="countdown-enabled" name="countdown-enabled" value="1" /> Display countdown timer to:</label>
+                <label><input type="checkbox" id="countdown-enabled" name="countdown" value="1" /> Display countdown timer to:</label>
                 <div>
-                  <select id="countdown-hour">
+                  <select id="countdown-hour" name="hour">
                   </select>
                   <span>:</span>
-                  <select id="countdown-minute">
+                  <select id="countdown-minute" name="minute">
                   </select>
                   <span>:</span>
-                  <select id="countdown-second">
+                  <select id="countdown-second" name="second">
                   </select>
                 </div>
                 <div>
@@ -100,7 +100,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
                   <a href="#" class="button" id="set-10min">10</a>
                   <span>mins</span>
                 </div>
-                <button type="submit" onClick="updateCurtain(); return false;">Save &amp; Close</button>
+                <input type="submit" value="Update Safety Curtain"/>
+                <!-- <button type="submit" onClick="updateCurtain(); return false;">Save &amp; Close</button> -->
             </form>
         </section>
         <section id="curtain">
@@ -202,6 +203,32 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
             }
         }
 
+        function updateFromQueryString() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const message = urlParams.get('message') || 'Henlo';
+            const theme = urlParams.get('theme') || 'rainbow';
+            const countdown = urlParams.get('countdown') || '';
+            const hour = urlParams.get('hour') || '';
+            const minute = urlParams.get('minute') || '';
+            const second = urlParams.get('second') || '';
+
+            let messageField = document.getElementById("message");
+            messageField.value = message;
+            let themeField = document.getElementById("theme");
+            themeField.value = theme;
+            let countdownField = document.getElementById("countdown-enabled");
+            countdownField.checked = (countdown == '1' ? true : false);
+            let countdownHour = document.getElementById("countdown-hour");
+            countdownHour.value = hour;
+            let countdownMinute = document.getElementById("countdown-minute");
+            countdownMinute.value = minute;
+            let countdownSecond = document.getElementById("countdown-second");
+            countdownSecond.value = second;
+
+            // let message = document.getElementById("message").value || "Safety Curtain";
+
+        }
+
         /* Toggle customise panel */
         var customiseBtn = document.querySelector("#customise-btn");
         customiseBtn.addEventListener('click', function(ev) {
@@ -272,6 +299,9 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
             endtime.setMinutes('00');
             endtime.setSeconds('00');
             const timeinterval = setInterval(updateClock, 1000, clock, endtime);
+
+            updateFromQueryString();
+            updateCurtain();
         };
     </script>
 </body>
